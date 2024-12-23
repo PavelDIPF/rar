@@ -248,32 +248,68 @@ local Tab = Window:NewTab("👁️ Esp")
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("💸 Смешные Цены")
 
-
+Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("👚 Секонд Стиль")
 
-
+Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("🏋️‍♂️ Спорт Мастер")
 
-
+Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("🧥 The North Face")
 
-
+Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("👚 Rick Owens")
 
-
+Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("🧥 Moncler")
 
-
+Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("👗 Chrome Hearts")
@@ -283,7 +319,13 @@ local Section = Tab:NewSection("👗 Chrome Hearts")
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("👜 Louis Vuitton")
 
-
+Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("👠 Balenciaga")
@@ -293,11 +335,23 @@ local Section = Tab:NewSection("👠 Balenciaga")
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("🍏 Bape")
 
-
+Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("👕 Vetements")
 
-
+Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
 -------------------------------------------------------------------------------------
