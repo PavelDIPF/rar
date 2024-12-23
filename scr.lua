@@ -256,7 +256,8 @@ Section:NewToggle("✨ Подсветить Магазин 🏪", "Активи�
 
     -- Функция для обновления подсветки
     local function updateHighlights()
-        if not toggleActive then return end -- Выход, если выключено
+        -- Если выключено, сразу выходим
+        if not toggleActive then return end
 
         -- Проверяем папку Stores в workspace
         local storesFolder = game.Workspace.World.Debris.Stores
@@ -273,8 +274,8 @@ Section:NewToggle("✨ Подсветить Магазин 🏪", "Активи�
                             highlight.Name = "Highlight"
                             highlight.Adornee = model
                             highlight.FillColor = Color3.new(1, 1, 0) -- Жёлтый цвет
-                            highlight.FillTransparency = 0 -- Полная заливка
-                            highlight.OutlineTransparency = 0 -- Без прозрачности контура
+                            highlight.FillTransparency = 0.5 -- Полупрозрачность
+                            highlight.OutlineTransparency = 0.3 -- Полупрозрачность контура
                             highlight.Parent = model
                         end
                     else
@@ -292,10 +293,12 @@ Section:NewToggle("✨ Подсветить Магазин 🏪", "Активи�
     end
 
     -- Цикл для обновления подсветки каждую секунду
-    while toggleActive do
-        updateHighlights()
-        wait(1) -- Обновление каждые 1 секунду
-    end
+    spawn(function()
+        while toggleActive do
+            updateHighlights()
+            wait(1) -- Обновление каждые 1 секунду
+        end
+    end)
 
     -- Удаление всех Highlight при выключении
     if not toggleActive then
@@ -313,6 +316,7 @@ Section:NewToggle("✨ Подсветить Магазин 🏪", "Активи�
         print("🛑 Подсветка отключена!")
     end
 end)
+
 
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("👚 Секонд Стиль")
