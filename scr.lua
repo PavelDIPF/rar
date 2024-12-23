@@ -248,11 +248,69 @@ local Tab = Window:NewTab("👁️ Esp")
 -------------------------------------------------------------------------------------
 local Section = Tab:NewSection("💸 Смешные Цены")
 
-Section:NewToggle("ToggleText", "ToggleInfo", function(state)
-    if state then
-        print("Toggle On")
-    else
-        print("Toggle Off")
+-- Функция для обработки переключателя
+Section:NewToggle("✨ Подсветить Магазин 🏪", "Активируйте, чтобы подсветить магазины с определённым значением!", function(state)
+    -- Переменная для контроля обновления
+    local toggleActive = state
+    print(toggleActive and "✅ Подсветка включена!" or "❌ Подсветка выключена!")
+
+    -- Функция для обновления подсветки
+    local function updateHighlights()
+        if not toggleActive then return end -- Выход, если выключено
+
+        -- Проверяем папку Stores в workspace
+        local storesFolder = game.Workspace.World.Debris.Stores
+        if storesFolder and storesFolder:IsA("Folder") then
+            for _, model in ipairs(storesFolder:GetChildren()) do
+                if model:IsA("Model") then
+                    -- Ищем IntValue внутри модели
+                    local intValue = model:FindFirstChildWhichIsA("IntValue")
+                    if intValue and intValue.Value == 189082896 then
+                        -- Проверяем, есть ли уже Highlight
+                        if not model:FindFirstChild("Highlight") then
+                            -- Создаём Highlight и настраиваем его
+                            local highlight = Instance.new("Highlight")
+                            highlight.Name = "Highlight"
+                            highlight.Adornee = model
+                            highlight.FillColor = Color3.new(1, 1, 0) -- Жёлтый цвет
+                            highlight.FillTransparency = 0 -- Полная заливка
+                            highlight.OutlineTransparency = 0 -- Без прозрачности контура
+                            highlight.Parent = model
+                        end
+                    else
+                        -- Удаляем Highlight, если значение больше не соответствует
+                        local highlight = model:FindFirstChild("Highlight")
+                        if highlight then
+                            highlight:Destroy()
+                        end
+                    end
+                end
+            end
+        else
+            print("❗ Папка Stores не найдена или не является папкой.")
+        end
+    end
+
+    -- Цикл для обновления подсветки каждую секунду
+    while toggleActive do
+        updateHighlights()
+        wait(1) -- Обновление каждые 1 секунду
+    end
+
+    -- Удаление всех Highlight при выключении
+    if not toggleActive then
+        local storesFolder = game.Workspace.World.Debris.Stores
+        if storesFolder and storesFolder:IsA("Folder") then
+            for _, model in ipairs(storesFolder:GetChildren()) do
+                if model:IsA("Model") then
+                    local highlight = model:FindFirstChild("Highlight")
+                    if highlight then
+                        highlight:Destroy()
+                    end
+                end
+            end
+        end
+        print("🛑 Подсветка отключена!")
     end
 end)
 
